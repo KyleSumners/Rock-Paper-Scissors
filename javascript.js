@@ -28,6 +28,19 @@ function playRound(playerSelection, computerSelection) {
   return result;
 }
 
+function game() {
+  while(playerScore < 3 && computerScore < 3) {
+    let playerChoice = prompt("Rock, Paper, or Scissors?");
+    console.log(playRound(playerChoice, getComputerChoice()));
+  }
+
+  if(playerScore == 3) {
+    console.log("Congratulations! You win!");
+  } else {
+    console.log("You lose. Better luck next time!");
+  }
+}
+
 function capitalize(word) {
   word = word.charAt(0).toUpperCase() + word.slice(1);
 }
