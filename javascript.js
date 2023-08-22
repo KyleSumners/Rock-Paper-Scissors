@@ -1,24 +1,33 @@
-const choices = ["ROCK", "PAPER", "SCISSORS"]
+const CHOICES = ["Rock", "Paper", "Scissors"];
+let playerScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
- return choices[Math.floor(Math.random() * 3 + 1)];
+ return CHOICES[Math.floor(Math.random() * 3 + 1)];
 }
 
 function playRound(playerSelection, computerSelection) {
   let result = "You ";
+  let computerChoice = computerSelection.toUpperCase();
 
   playerSelection = playerSelection.toUpperCase();
   if(playerSelection === computerSelection) {
     result += "Draw!"
   } else if (
-    (playerSelection == "ROCK" && computerSelection == "SCISSORS") 
-    || (playerSelection == "PAPER" && computerSelection == "ROCK")
-    || (playerSelection == "SCISSORS" && computerSelection == "PAPER")
+    (playerSelection == "ROCK" && computerChoice == "SCISSORS") 
+    || (playerSelection == "PAPER" && computerChoice == "ROCK")
+    || (playerSelection == "SCISSORS" && computerChoice == "PAPER")
   ) {
-    result  += `Win! ${playerSelection} beats $`
+    playerScore++;
+    result  += `Win! ${capitalize(playerSelection)} beats ${computerSelection}.`;
+  } else {
+    computerScore++;
+    result += `Lose! ${computerSelection} beats ${playerSelection}.`;
   }
+
+  return result;
 }
 
-function Capitalize(word) {
+function capitalize(word) {
   word = word.charAt(0).toUpperCase() + word.slice(1);
 }
