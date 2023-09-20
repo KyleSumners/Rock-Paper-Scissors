@@ -13,10 +13,11 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection = "") {
   let computerChoice = computerSelection.toLowerCase();
-  roundWinner = "tie";
 
   playerSelection = playerSelection.toLowerCase();
-  if (
+  if(playerSelection === computerChoice) {
+    roundWinner = "tie";
+  } else if (
     (playerSelection == "rock" && computerChoice == "scissors") 
     || (playerSelection == "paper" && computerChoice == "rock")
     || (playerSelection == "scissors" && computerChoice == "paper")
